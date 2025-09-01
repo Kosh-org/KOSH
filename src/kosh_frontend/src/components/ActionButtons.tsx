@@ -597,7 +597,7 @@ const ActionButtons = ({ stellarAddress, evmAddress, onSendTransaction, onRefres
                               className="w-full"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
-                              View on Stellar Explorer
+                              View on Explorer
                             </Button>
                           )}
                         </>
@@ -1019,7 +1019,7 @@ const ActionButtons = ({ stellarAddress, evmAddress, onSendTransaction, onRefres
                               className="w-full"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
-                              View on Stellar Testnet Explorer
+                              View on Explorer
                             </Button>
                           </div>
                         </div>

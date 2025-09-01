@@ -313,7 +313,7 @@ const ActionButtons = ({ stellarAddress, onSendTransaction, onRefreshBalance, ac
                               className="w-full"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
-                              View on Stellar Explorer
+                              View on Explorer
                             </Button>
                           )}
                         </>
