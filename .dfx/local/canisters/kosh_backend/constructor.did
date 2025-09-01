@@ -1,0 +1,39 @@
+type CandidContractEvent = record {
+  id : text;
+  topic : vec text;
+  contract_id : text;
+  ledger : nat32;
+  paging_token : text;
+  xdr_value : text;
+};
+type HttpHeader = record { value : text; name : text };
+type HttpResponse = record {
+  status : nat;
+  body : blob;
+  headers : vec HttpHeader;
+};
+type Result = variant { Ok : text; Err : text };
+type TransformArgs = record { context : blob; response : HttpResponse };
+service : {
+  build_stellar_transaction : (text, text, opt text) -> (Result);
+  check_trustline : (text, text, opt text) -> (Result);
+  create_trustline : (text, text, opt text, opt text) -> (Result);
+  evm_block_fetch : (nat64) -> ();
+  execute_bridge_lock : (text, text, nat64, text, text, opt text) -> (Result);
+  execute_token_swap : (text, text, text, nat64, text, opt text) -> (Result);
+  fetch_stellar_events : (nat32, text) -> (Result);
+  generate_canister_key_pair_evm : () -> (Result);
+  generate_key_pair_evm : () -> (Result);
+  get_account_assets : (opt text) -> (Result);
+  get_event_by_id : (text) -> (opt CandidContractEvent) query;
+  get_events : () -> (vec CandidContractEvent) query;
+  greet : (text) -> (text) query;
+  public_key_stellar : () -> (Result);
+  send_eth_evm : (text, float64, text) -> (Result);
+  sign_stellar_swap : (text, opt text) -> (Result);
+  start_periodic_fetch : (nat64) -> ();
+  stellar_user_lock_txn : (text, text) -> (Result);
+  transform_coingecko_response : (TransformArgs) -> (HttpResponse) query;
+  transform_http_response : (TransformArgs) -> (HttpResponse) query;
+  transform_stellar_response : (TransformArgs) -> (HttpResponse) query;
+}

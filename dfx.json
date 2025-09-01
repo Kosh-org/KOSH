@@ -1,0 +1,48 @@
+{
+  "canisters": {
+    "kosh_backend": {
+      "candid": "src/kosh_backend/kosh_backend.did",
+      "package": "kosh_backend",
+      "type": "rust"
+    },
+    "kosh_frontend": {
+      "dependencies": [
+        "kosh_backend",
+        "internet-identity"
+      ],
+      "source": [
+        "src/kosh_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "kosh_frontend",
+      "headers": [
+        {
+          "source": "/**",
+          "headers": [
+            {
+              
+              "name": "Content-Security-Policy",
+              "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' http://localhost:* https://icp0.io https://*.icp0.io https://icp-api.io https://horizon-testnet.stellar.org https://horizon.stellar.org https://*.stellar.org https://endpoints.omniatech.io https://base.drpc.org https://api.coingecko.com; worker-src 'self' blob:"
+            }
+          ]
+        }
+      ]
+    },
+    "internet-identity": {
+      "type": "pull",
+      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    },
+    "evm_rpc": {
+      "type": "pull",
+      "id": "7hfb6-caaaa-aaaar-qadga-cai"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
